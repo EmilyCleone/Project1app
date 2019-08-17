@@ -1,0 +1,67 @@
+body{
+    background-image: url("http://anacapaisle.com/wp-content/uploads/sites/39/2018/05/event.jpg");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 24%;
+}
+#nav-text{
+    text-align: center;
+    font-size: 40px;
+    color: rgb(248, 169, 79);
+    margin-left: 38%;
+    margin-bottom: -4px;
+    margin-top: -7px;
+}
+#formBox{
+    width: 70%;
+    height: 600px;
+    background-color: rgba(0,0,0, 0.8);
+    margin: 0 auto; 
+    margin-top: 10px;
+
+}
+#name-form{
+    color: white;
+    margin-left: 47%;
+    margin-top: 40px;
+}
+#budget-form{
+    color:white;
+    margin-left: 47%;
+}
+#time-form{
+    color:white;
+    margin-left: 44%;
+}
+#age-form{
+    color:white;
+    margin-left: 48%;
+}
+#location-form{
+    color:white;
+    margin-left: 47%;
+}
+#name{
+    width: 200px;
+    margin: 0 auto;
+}
+#budget{
+    width: 200px;
+    margin: 0 auto;
+}
+#time{
+    width: 200px;
+    margin: 0 auto;
+}
+#age{
+    width: 200px;
+    margin: 0 auto;
+}
+#location{
+    width: 200px;
+    margin: 0 auto;
+}
+#submit-button{
+    margin: 0 auto;
+    margin-left: 47%;
+}
