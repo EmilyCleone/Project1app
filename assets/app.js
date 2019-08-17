@@ -21,7 +21,9 @@
 //====================Emily's Section=====================//
 
 
+$("#submit-button").on("click", function () {
+    $("#submit-button").hide();
+    $("#formBox").hide();
 
-
-
+}
 //====================Emily End===========================//

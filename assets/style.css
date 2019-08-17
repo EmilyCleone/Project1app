@@ -7,10 +7,10 @@ body{
 #nav-text{
     text-align: center;
     font-size: 40px;
-    color: rgb(255, 217, 0);
+    color: rgb(253, 135, 0);
     margin-left: 38%;
 }
-.formBox{
+#formBox{
     width: 70%;
     height: 655px;
     background-color: rgba(0,0,0, 0.8);
