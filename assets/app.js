@@ -46,8 +46,8 @@ $("#submit-button").on("click", function(event) {
 
 
 
-$("#submit-button").on("click", function (event) {
-    event.preventDefault();
+// $("#submit-button").on("click", function (event) {
+//     event.preventDefault();
     
-});
+// });
 //====================Emily End===========================//
