@@ -41,23 +41,23 @@ body{
     color:white;
     margin-left: 47%;
 }
-#name{
+#name-input{
     width: 200px;
     margin: 0 auto;
 }
-#budget{
+#budget-input{
     width: 200px;
     margin: 0 auto;
 }
-#time{
+#time-input{
     width: 200px;
     margin: 0 auto;
 }
-#age{
+#age-input{
     width: 200px;
     margin: 0 auto;
 }
-#location{
+#location-input{
     width: 200px;
     margin: 0 auto;
 }
