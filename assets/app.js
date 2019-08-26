@@ -157,7 +157,7 @@ router.calculateRoute(routingParameters, onResult,
        console.log(response);
 
        // Transfer content to HTML
-       $(".city").html("<h1>" + response.name + " Weather Details</h1>");
+       $(".city").html(response.name + " Weather Details");
        $(".weather").text("Weather: " + response.weather[0].description);
        $(".temp").text("Temperature (F) " + response.main.temp);
 
