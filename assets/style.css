@@ -68,3 +68,7 @@
 #interest-list{
 color:white;
 }
+#mapContainer{
+    width: 200px;
+    height: 200px;
+}
