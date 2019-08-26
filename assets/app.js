@@ -14,21 +14,53 @@
 //Events API
 // var token ="D5NQE7TMJX4PHIHKIRHQ"
 // var location = "this_is_a_test"
+var queryURL = "https://www.eventbriteapi.com/v3/events/search/?"
+var location_1 = $(this).attr("data-location");
+console.log(location_1)
+// var locationString = "location.address=" + location_1 +"&location.within=10km"
+// if (location_1 !== "" ){
+// queryURL+=locationString
+// }
+// var categories = $(this).attr("data-categories");
+// var categoriesString = "&categories=" + categories 
+// if(categories!== ""){
+//  queryURL+=categoriesString 
+// }
+// var budget = $(this).attr("data-budget");
+// var budgetString = "&price=" + budget
+// if(budget!== ""){
+//   queryURL+budgetString
+// }
+// var startDate = $(this).attr("data-startDate");
+// var startDateString = "&start_date.keyword=" + startDate
+// if(startDate!== ""){
+//   queryURL+startDateString
+// }
+// var age = $(this).attr("data-name");
+// var ageString = "&include_adult_events=" + age
+// if (!== null){
+//   queryURL+ageString
+// }
+
+
 var settings = {
   "async": true,
   "crossDomain": true,
   // "url": "https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue&token="+ token,
   // "url": 'https://www.eventbriteapi.com/v3/events/search/?token='+ token + "&location.address=vancovuer&location.within=10km&expand=venue",
   //"url": "https://www.eventbriteapi.com/v3/events/search/?location.within=50km&location.latitude=-27.466667&location.longitude=153.033333&&categories=102&token=D5NQE7TMJX4PHIHKIRHQ",
-  "url": "https://www.eventbriteapi.com/v3/events/search/?location.address=salt+lake+city&location.within=10km&start_date.keyword=next_week",
+  "url": queryURL,
   "method": "GET",
   "headers": {
     "Authorization": "Bearer D5NQE7TMJX4PHIHKIRHQ",
     // "Content-Type": "application/json"
   }
  }
+
+  console.log(this)
+ 
  $.ajax(settings).done(function (response) {
-  console.log(response);
+  console.log(this);
  });
 
 
@@ -36,97 +68,97 @@ var settings = {
 //====================Kris End============================//
 //Maps API
 // Instantiate a map and platform object:
-var platform = new H.service.Platform({
-  'apikey': 'kYg1ZabnHl6tuIke8C9aSCH_oGt3itG_QM5DaCl5Abg'
-});
-// Retrieve the target element for the map:
-var targetElement = document.getElementById('mapContainer');
+// var platform = new H.service.Platform({
+//   'apikey': 'kYg1ZabnHl6tuIke8C9aSCH_oGt3itG_QM5DaCl5Abg'
+// });
+// // Retrieve the target element for the map:
+// var targetElement = document.getElementById('mapContainer');
 
-// Get the default map types from the platform object:
-var defaultLayers = platform.createDefaultLayers();
+// // Get the default map types from the platform object:
+// var defaultLayers = platform.createDefaultLayers();
 
-// Instantiate the map:
-var map = new H.Map(
-  document.getElementById('mapContainer'),
-  defaultLayers.vector.normal.map,
-  {
-  zoom: 10,
-  center: { lat: 40.7607793, lng: -111.8910474 }
-  });
-// Create the parameters for the routing request:
-var routingParameters = {
-  // The routing mode:
-  'mode': 'fastest;car',
-  // The start point of the route:
-  'waypoint0': 'geo!50.1120423728813,8.68340740740811',
-  // The end point of the route:
-  'waypoint1': 'geo!52.5309916298853,13.3846220493377',
-  // To retrieve the shape of the route we choose the route
-  // representation mode 'display'
-  'representation': 'display'
-};
+// // Instantiate the map:
+// var map = new H.Map(
+//   document.getElementById('mapContainer'),
+//   defaultLayers.vector.normal.map,
+//   {
+//   zoom: 10,
+//   center: { lat: 40.7607793, lng: -111.8910474 }
+//   });
+// // Create the parameters for the routing request:
+// var routingParameters = {
+//   // The routing mode:
+//   'mode': 'fastest;car',
+//   // The start point of the route:
+//   'waypoint0': 'geo!50.1120423728813,8.68340740740811',
+//   // The end point of the route:
+//   'waypoint1': 'geo!52.5309916298853,13.3846220493377',
+//   // To retrieve the shape of the route we choose the route
+//   // representation mode 'display'
+//   'representation': 'display'
+// };
 
-// Define a callback function to process the routing response:
-var onResult = function(result) {
-  var route,
-  routeShape,
-  startPoint,
-  endPoint,
-  linestring;
-  if(result.response.route) {
-  // Pick the first route from the response:
-  route = result.response.route[0];
-  // Pick the route's shape:
-  routeShape = route.shape;
+// // Define a callback function to process the routing response:
+// var onResult = function(result) {
+//   var route,
+//   routeShape,
+//   startPoint,
+//   endPoint,
+//   linestring;
+//   if(result.response.route) {
+//   // Pick the first route from the response:
+//   route = result.response.route[0];
+//   // Pick the route's shape:
+//   routeShape = route.shape;
 
-  // Create a linestring to use as a point source for the route line
-  linestring = new H.geo.LineString();
+//   // Create a linestring to use as a point source for the route line
+//   linestring = new H.geo.LineString();
 
-  // Push all the points in the shape into the linestring:
-  routeShape.forEach(function(point) {
-  var parts = point.split(',');
-  linestring.pushLatLngAlt(parts[0], parts[1]);
-  });
+//   // Push all the points in the shape into the linestring:
+//   routeShape.forEach(function(point) {
+//   var parts = point.split(',');
+//   linestring.pushLatLngAlt(parts[0], parts[1]);
+//   });
 
-  // Retrieve the mapped positions of the requested waypoints:
-  startPoint = route.waypoint[0].mappedPosition;
-  endPoint = route.waypoint[1].mappedPosition;
+//   // Retrieve the mapped positions of the requested waypoints:
+//   startPoint = route.waypoint[0].mappedPosition;
+//   endPoint = route.waypoint[1].mappedPosition;
 
-  // Create a polyline to display the route:
-  var routeLine = new H.map.Polyline(linestring, {
-  style: { strokeColor: 'blue', lineWidth: 3 }
-  });
+//   // Create a polyline to display the route:
+//   var routeLine = new H.map.Polyline(linestring, {
+//   style: { strokeColor: 'blue', lineWidth: 3 }
+//   });
 
-  // Create a marker for the start point:
-  var startMarker = new H.map.Marker({
-  lat: startPoint.latitude,
-  lng: startPoint.longitude
-  });
+//   // Create a marker for the start point:
+//   var startMarker = new H.map.Marker({
+//   lat: startPoint.latitude,
+//   lng: startPoint.longitude
+//   });
 
-  // Create a marker for the end point:
-  var endMarker = new H.map.Marker({
-  lat: endPoint.latitude,
-  lng: endPoint.longitude
-  });
+//   // Create a marker for the end point:
+//   var endMarker = new H.map.Marker({
+//   lat: endPoint.latitude,
+//   lng: endPoint.longitude
+//   });
 
-  // Add the route polyline and the two markers to the map:
-  map.addObjects([routeLine, startMarker, endMarker]);
+//   // Add the route polyline and the two markers to the map:
+//   map.addObjects([routeLine, startMarker, endMarker]);
 
-  // Set the map's viewport to make the whole route visible:
-  map.getViewModel().setLookAtData({bounds: routeLine.getBoundingBox()});
-  }
-};
+//   // Set the map's viewport to make the whole route visible:
+//   map.getViewModel().setLookAtData({bounds: routeLine.getBoundingBox()});
+//   }
+// };
 
-// Get an instance of the routing service:
-var router = platform.getRoutingService();
+// // Get an instance of the routing service:
+// var router = platform.getRoutingService();
 
-// Call calculateRoute() with the routing parameters,
-// the callback and an error callback function (called if a
-// communication error occurs):
-router.calculateRoute(routingParameters, onResult,
-  function(error) {
-  alert(error.message);
-  });
+// // Call calculateRoute() with the routing parameters,
+// // the callback and an error callback function (called if a
+// // communication error occurs):
+// router.calculateRoute(routingParameters, onResult,
+//   function(error) {
+//   alert(error.message);
+//   });
 
  
 
@@ -138,7 +170,7 @@ router.calculateRoute(routingParameters, onResult,
 
    // Here we are building the URL we need to query the database
    var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-     "q=Salt+lake+city,Burundi&units=imperial&appid=" + APIKey;
+     "q="+ location_1 +",Burundi&units=imperial&appid=" + APIKey;
 
      https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue&token=D5NQE7TMJX4PHIHKIRHQ
 
@@ -219,7 +251,7 @@ $("#submit-button").on("click", function(event) {
   event.preventDefault();
 
   // Capture User Inputs and store them into variables
-  var name=$("#name-input").val();
+  var name=$("#category-input").val();
   var budget= $("#budget-input").val();
   var time=$("#time-input").val();
   var age=$("#age-input").val();
@@ -233,7 +265,7 @@ $("#submit-button").on("click", function(event) {
   console.log(location);
 
 
-  localStorage.setItem("name-input", name);
+  localStorage.setItem("category-input", name);
   localStorage.setItem("budget-input", budget);
   localStorage.setItem("time-input", time);
   localStorage.setItem("age-input", age);
