@@ -70,10 +70,10 @@
     margin: 0 auto;
 }
 #submit-button{
+    background-color:rgb(247, 139, 17);
+    color:white;
+    width: 200px;
     margin: 0 auto;
-    position: relative;
-    left: 47%;
-    right: 45%;
 }
 #iText{
     color:white;
