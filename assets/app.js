@@ -219,35 +219,7 @@ function weatherApi() {
 var interestsArray = [];
 
 
-$("#submit-button").on("click", function(event) {
-  event.preventDefault();
-
-  // Capture User Inputs and store them into variables
-  var interests=$("#interest-input").val();
-  var budget= $("#budget-input").val();
-  var time=$("#time-input").val();
-  var age=$("#age-input").val();
-  var location=$("#location-input").val();
-
-  // Console log each of the user inputs to confirm we are receiving them correctly
-  console.log(interests);
-  console.log(budget);
-  console.log(time);
-  console.log(age);
-  console.log(location);
-
-
-  localStorage.setItem("interest-input", interests);
-  localStorage.setItem("budget-input", budget);
-  localStorage.setItem("time-input", time);
-  localStorage.setItem("age-input", age);
-  localStorage.setItem("location-input", location);
-
-
-  interestsArray.push(interests);
-  localStorage.setItem('interest-input', JSON.stringify(interestsArray))
-});
-$("#submit-button").on("click", function (event) {
+$(document).on("submit", "eventForm", function(event) {
   event.preventDefault();
 
   // Capture User Inputs and store them into variables
@@ -308,8 +280,6 @@ $("#submit-button").on("click", function (event) {
       // console.log("Humidity: " + response.main.humidity);
       // console.log("Temperature (F): " + response.main.temp);
     });
-
-
 
 
 
